@@ -18,7 +18,7 @@ init(autoreset=True)
 
 def show_warning():
     print(Fore.CYAN + Style.BRIGHT + """
- -================= ≫ ──── ≪•◦ ❈ ◦•≫ ──── ≪=================-
+-================= ≫ ──── ≪•◦ ❈ ◦•≫ ──── ≪=================-
  │                                                          │
  │  ██████╗  █████╗ ██████╗ ██╗  ██╗                        │
  │  ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝                        │
@@ -48,6 +48,9 @@ def show_warning():
     except KeyboardInterrupt:
         print(Fore.RED + Style.BRIGHT + "\nProcess terminated by user. Goodbye!")
         exit()
+
+# Function call for testing
+show_warning()
 
 PING_INTERVAL = 60
 RETRIES = 60
