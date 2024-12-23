@@ -12,26 +12,40 @@ def log(level, message, color=Fore.WHITE):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     formatted_message = f"{Fore.CYAN}[{timestamp}]{Style.RESET_ALL} {color}[{level}]{Style.RESET_ALL} {message}"
     print(formatted_message)
+from colorama import Fore, Style, init
+
+init(autoreset=True)
 
 def show_warning():
-    print(Fore.LIGHTYELLOW_EX + """
-   _  __        __    ___              ___       __                  __     
-  / |/ /__  ___/ /__ / _ \___ ___ __  / _ |__ __/ /____  __ _  ___ _/ /____ 
- /    / _ \/ _  / -_) ___/ _ `/ // / / __ / // / __/ _ \/  ' \/ _ `/ __/ -_)
-/_/|_/\___/\_,_/\__/_/   \_,_/\_, / /_/ |_\_,_/\__/\___/_/_/_/\_,_/\__/\__/ 
-                             /___/                                          
-          Nodepay Autofarmer by IM-Hanzou: github.com/im-hanzou\n""")
+    print(Fore.CYAN + Style.BRIGHT + """
+   ███╗   ██╗ ██████╗ ██████╗ ███████╗██████╗  █████╗ ██╗   ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗██║   ██║██╔════╝
+   ██╔██╗ ██║██║   ██║██║  ██║█████╗  ██████╔╝███████║██║   ██║███████╗
+   ██║╚██╗██║██║   ██║██║  ██║██╔══╝  ██╔═══╝ ██╔══██║╚██╗ ██╔╝╚════██║
+   ██║ ╚████║╚██████╔╝██████╔╝███████╗██║     ██║  ██║ ╚████╔╝ ███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝  ╚═╝  ╚═══╝  ╚══════╝
+                 Welcome to Nodepay Autofarmer Tool
+                        github.com/Mittyadav
+    """)
+
     try:
-        confirm = input(Fore.LIGHTRED_EX + "By using this tool means you understand the risks. Do it at your own risk! \n" + 
-                       Fore.LIGHTYELLOW_EX + "Press Enter to continue or Ctrl+C to cancel... ")
+        confirm = input(
+            Fore.MAGENTA + Style.BRIGHT + 
+            "By using this tool, you accept all associated risks. Proceed with caution!\n" + 
+            Fore.YELLOW + 
+            "Press Enter to continue or Ctrl+C to cancel... "
+        )
         if confirm.strip() == "":
-            print(Fore.LIGHTGREEN_EX + "Continuing...")
+            print(Fore.GREEN + Style.BRIGHT + "Great! Proceeding with the process...")
         else:
-            print(Fore.LIGHTRED_EX + "Exiting...")
+            print(Fore.RED + Style.BRIGHT + "Exiting the program. Stay safe!")
             exit()
     except KeyboardInterrupt:
-        print(Fore.LIGHTRED_EX + "\nExiting...")
+        print(Fore.RED + Style.BRIGHT + "\nProcess terminated by user. Goodbye!")
         exit()
+
+# Function call for testing
+show_warning()
 
 PING_INTERVAL = 60
 RETRIES = 60
