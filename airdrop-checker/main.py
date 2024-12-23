@@ -228,7 +228,7 @@ if __name__ == "__main__":
  ||\\\\|| ((   )) ||  )) ||==  ||_// ||=||  )/ 
  || \\||  \\\\_//  ||_//  ||___ ||    || || //  
 
-    Eligibility Checker - Github: IM-Hanzou"""
+    Eligibility Checker - Github: Mittyadav"""
     print(f"{Colors.INFO}{banner}{Colors.RESET}\n")
     checker = AirdropChecker()
     checker.run()
