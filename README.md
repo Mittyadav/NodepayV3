@@ -11,34 +11,24 @@ Automate farming Nodepay Network using proxies. Important! Please read the Infor
 1. Nodepay Account | Register: [https://app.nodepay.ai/register](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J)
 2. VPS (OPTIONAL) and Python3
 3. Proxies
-## Buy Proxies
-- Free Proxies Static Residental: 
-1. [WebShare](https://www.webshare.io/?referral_code=p7k7whpdu2jg)
-2. [ProxyScrape](https://proxyscrape.com/?ref=odk1mmj)
-3. [MonoSans](https://github.com/monosans/proxy-list)
-- Paid Premium Static Residental:
-1. [922proxy](https://www.922proxy.com/register?inviter_code=d03d4fed)
-2. [Proxy-Cheap](https://app.proxy-cheap.com/r/JysUiH)
-3. [Infatica](https://dashboard.infatica.io/aff.php?aff=544)
-# Setup Tutorial
-- Open [Nodepay](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J) and login to dashboard
+ to dashboard
 - Press F12 or CTRL + SHIFT + I
 - Select CONSOLE and type ```allow pasting``` and press enter
 <!-- - Important! Make sure you installed Nodepay Extension in your Browser and must be Connected after getting token!, Download Extension: [Nodepay Extension](https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm) -->
-![0001](https://github.com/im-hanzou/getgrass_bot/blob/main/pasting.JPG)
+![0001](https://github.com/Mittyadav/getgrass_bot/blob/main/pasting.JPG)
 - Then type ``localStorage.getItem('np_token')`` and press enter
-![0002](https://github.com/im-hanzou/getgrass_bot/blob/main/nodepaytoken.png)
+![0002](https://github.com/Mittyadav/getgrass_bot/blob/main/nodepaytoken.png)
 - The text that appears is your nodepay token and copy the text
 # Components installation
 ### WINDOWS
 Now this script support Windows without [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 - Install Python For Windows: [Python](https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe)
-- Download this script Manually: [Nodepay Automate](https://github.com/im-hanzou/nodepay-automate/archive/refs/heads/main.zip)
+- Download this script Manually: [Nodepay Automate](https://github.com/Mittyadav/nodepay-automate/archive/refs/heads/main.zip)
 - If you want to use Git, Please download Git first: [Git Windows](https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/Git-2.47.1-64-bit.exe), Then run in cmd:
 ```bash
-git clone https://github.com/im-hanzou/nodepay-automate
+git clone https://github.com/Mittyadav/NodepayV3
 ```
-- Make sure you are in this script directory: ``cd nodepay-automate``
+- Make sure you are in this script directory: ``cd NodepayV3``
 - Installing requirements:
 ```bash
 python -m pip install -r requirements.txt
@@ -57,7 +47,7 @@ yum update; yum upgrade -y; yum install git python3 python3-pip -y
 ```
 - Download this script using Git:
 ```bash
-git clone https://github.com/im-hanzou/nodepay-automate
+git clone https://github.com/Mittyadav/NodepayV3
 ```
 - Make sure you are in this script directory: ``cd nodepay-automate``
 - Installing requirements: 
@@ -72,9 +62,9 @@ pkg update; pkg upgrade -y; pkg install git python python-pip -y
 ```
 - Download this script using Git:
 ```bash
-git clone https://github.com/im-hanzou/nodepay-automate
+git clone https://github.com/Mittyadav/NodepayV3
 ```
-- Make sure you are in this script directory: ``cd nodepay-automate``
+- Make sure you are in this script directory: ``cd NodepayV3``
 - Copy ``libcurl-impersonate-chrome.so.4`` to ``/data/data/com.termux/files/usr/lib``
 ```bash
 cp libcurl-impersonate-chrome.so.4 /data/data/com.termux/files/usr/lib
