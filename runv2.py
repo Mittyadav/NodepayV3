@@ -42,11 +42,7 @@ def show_warning():
         )
         if confirm.strip() == "":
             print(Fore.GREEN + Style.BRIGHT + "Great! Proceeding with the process...")
-        else:
-            print(Fore.RED + Style.BRIGHT + "Exiting the program. Stay safe!")
-            exit()
-    except KeyboardInterrupt:
-        print(Fore.RED + Style.BRIGHT + "\nProcess terminated by user. Goodbye!")
+        
         exit()
 
 PING_INTERVAL = 60
