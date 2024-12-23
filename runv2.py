@@ -49,9 +49,6 @@ def show_warning():
         print(Fore.RED + Style.BRIGHT + "\nProcess terminated by user. Goodbye!")
         exit()
 
-# Function call for testing
-show_warning()
-
 PING_INTERVAL = 60
 RETRIES = 60
 
