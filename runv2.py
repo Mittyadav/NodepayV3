@@ -144,7 +144,7 @@ async def render_profile_info(proxy, token):
             log("ERROR", f"Connection error: {e}", Fore.LIGHTRED_EX)
             return proxy
 
-async def execute_request(url, data, account, proxy=None, method='POST'):
+async def call_api(url, data, account, proxy=None, method='POST'):
     headers = {
         "Authorization": f"Bearer {account.token}",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
