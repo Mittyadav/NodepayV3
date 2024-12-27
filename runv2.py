@@ -56,9 +56,20 @@ PING_INTERVAL = 60
 RETRIES = 60
 
 DOMAIN_API = {
-    "SESSION": "http://api.nodepay.ai/api/auth/session",
-    "PING": "https://nw.nodepay.org/api/network/ping"
+
+    # Auth Endpoints
+    "ACTIVATE": "https://api.nodepay.ai/api/auth/active-account",
+
+    # Network Endpoints
+    "PING": ["https://nw.nodepay.org/api/network/ping"],
+    "SESSION": "https://api.nodepay.ai/api/auth/session",
+
+    # Earn and Mission Endpoints
+    "EARN_INFO": "https://api.nodepay.ai/api/earn/info",
+    "MISSION": "https://api.nodepay.ai/api/mission?platform=MOBILE",
+    "COMPLETE_MISSION": "https://api.nodepay.ai/api/mission/complete-mission"
 }
+
 
 CONNECTION_STATES = {
     "CONNECTED": 1,
