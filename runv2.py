@@ -165,8 +165,7 @@ headers = {
         "sec-fetch-site": "cors-site"
     }
 
-
-    try:
+try:
         response = requests.post(
             url, 
             json=data, 
