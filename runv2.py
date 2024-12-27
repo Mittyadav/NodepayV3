@@ -150,12 +150,9 @@ async def call_api(url, data, proxy, token):
         raise ValueError(f"Invalid proxy: {proxy}")
 
     headers = {
-        "Authorization": f"Bearer {token}",
+        "Authorization": f"Bearer {account.token}",
         "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0",
-        "Accept": "application/json",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Origin": "chrome-extension://lgmpfmgeabnnlemejacfljbmonaomfmm",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
     }
 
     try:
