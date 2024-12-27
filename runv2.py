@@ -149,11 +149,22 @@ async def call_api(url, data, proxy, token):
     if not parsed_proxies:
         raise ValueError(f"Invalid proxy: {proxy}")
 
-    headers = {
+headers = {
         "Authorization": f"Bearer {account.token}",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://app.nodepay.ai/",
+        "Accept": "application/json, text/plain, */*",
         "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "Origin": "chrome-extension://lgmpfmgeabnnlemejacfljbmonaomfmm",
+        "Sec-Ch-Ua": '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"',
+        "Sec-Ch-Ua-Mobile": "?0",
+        "Sec-Ch-Ua-Platform": '"Windows"',
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cors-site"
     }
+
 
     try:
         response = requests.post(
