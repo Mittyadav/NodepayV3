@@ -56,20 +56,9 @@ PING_INTERVAL = 60
 RETRIES = 60
 
 DOMAIN_API = {
-
-    # Auth Endpoints
-    "ACTIVATE": "https://api.nodepay.ai/api/auth/active-account",
-
-    # Network Endpoints
-    "PING": ["https://nw.nodepay.org/api/network/ping"],
-    "SESSION": "https://api.nodepay.ai/api/auth/session",
-
-    # Earn and Mission Endpoints
-    "EARN_INFO": "https://api.nodepay.ai/api/earn/info",
-    "MISSION": "https://api.nodepay.ai/api/mission?platform=MOBILE",
-    "COMPLETE_MISSION": "https://api.nodepay.ai/api/mission/complete-mission"
+    "SESSION": "http://api.nodepay.ai/api/auth/session",
+    "PING": "https://nw.nodepay.org/api/network/ping"
 }
-
 
 CONNECTION_STATES = {
     "CONNECTED": 1,
@@ -144,36 +133,34 @@ async def render_profile_info(proxy, token):
             log("ERROR", f"Connection error: {e}", Fore.LIGHTRED_EX)
             return proxy
 
-async def call_api(url, data, account, proxy=None, method='POST'):
+async def call_api(url, data, proxy, token):
+    parsed_proxies = parse_proxy(proxy)
+    if not parsed_proxies:
+        raise ValueError(f"Invalid proxy: {proxy}")
+
     headers = {
-        "Authorization": f"Bearer {account.token}",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://app.nodepay.ai/",
-        "Accept": "application/json, text/plain, */*",
+        "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0",
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.5",
         "Origin": "chrome-extension://lgmpfmgeabnnlemejacfljbmonaomfmm",
-        "Sec-Ch-Ua": '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"',
-        "Sec-Ch-Ua-Mobile": "?0",
-        "Sec-Ch-Ua-Platform": '"Windows"',
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "cors-site"
     }
 
-    proxy_config = {"http": proxy, "https": proxy} if proxy else None
-
     try:
-        if method == 'POST':
-            response = scraper.post(url, json=data, headers=headers, proxies=proxy_config, timeout=60)
-        else:
-            response = scraper.get(url, headers=headers, proxies=proxy_config, timeout=60)
-        response.raise_for_status()
-    except Exception as e:
-        logger.error(f"{Fore.RED}Error during API call for token {truncate_token(account.token)} with proxy {proxy}: {e}{Style.RESET_ALL}")
-        raise ValueError(f"Failed API call to {url}")
+        response = requests.post(
+            url, 
+            json=data, 
+            headers=headers, 
+            proxies=parsed_proxies,
+            timeout=30,
+            impersonate="safari15_5"
+        )
 
-    return response.json()
+        return valid_resp(response.json())
+    except Exception as e:
+        log("ERROR", f"Error during API call: {e}", Fore.LIGHTRED_EX)
+        raise ValueError(f"Failed API call to {url}")
 
 async def start_ping(proxy, token, account_info):
     try:
