@@ -144,12 +144,8 @@ async def render_profile_info(proxy, token):
             log("ERROR", f"Connection error: {e}", Fore.LIGHTRED_EX)
             return proxy
 
-async def call_api(url, data, proxy, token):
-    parsed_proxies = parse_proxy(proxy)
-    if not parsed_proxies:
-        raise ValueError(f"Invalid proxy: {proxy}")
-
-headers = {
+async def execute_request(url, data, account, proxy=None, method='POST'):
+    headers = {
         "Authorization": f"Bearer {account.token}",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
         "Accept-Language": "en-US,en;q=0.9",
@@ -165,20 +161,19 @@ headers = {
         "sec-fetch-site": "cors-site"
     }
 
-try:
-        response = requests.post(
-            url, 
-            json=data, 
-            headers=headers, 
-            proxies=parsed_proxies,
-            timeout=30,
-            impersonate="safari15_5"
-        )
+    proxy_config = {"http": proxy, "https": proxy} if proxy else None
 
-        return valid_resp(response.json())
+    try:
+        if method == 'POST':
+            response = scraper.post(url, json=data, headers=headers, proxies=proxy_config, timeout=60)
+        else:
+            response = scraper.get(url, headers=headers, proxies=proxy_config, timeout=60)
+        response.raise_for_status()
     except Exception as e:
-        log("ERROR", f"Error during API call: {e}", Fore.LIGHTRED_EX)
+        logger.error(f"{Fore.RED}Error during API call for token {truncate_token(account.token)} with proxy {proxy}: {e}{Style.RESET_ALL}")
         raise ValueError(f"Failed API call to {url}")
+
+    return response.json()
 
 async def start_ping(proxy, token, account_info):
     try:
